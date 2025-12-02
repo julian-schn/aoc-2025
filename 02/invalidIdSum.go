@@ -29,15 +29,19 @@ func main() {
 		return
 	}
 
-	sum, err := (findInvalidSumP1(ranges))
+	sumP1, err := findInvalidSumP1(ranges)
 	if err != nil {
 		fmt.Println("error:", err)
 		return
 	}
+	fmt.Printf("Part 1: %d\n", sumP1)
 
-	fmt.Println(sum)
-
-	return
+	sumP2, err := findInvalidSumP2(ranges)
+	if err != nil {
+		fmt.Println("error:", err)
+		return
+	}
+	fmt.Printf("Part 2: %d\n", sumP2)
 }
 
 func parseRanges(filename string) ([][2]int, error) {
@@ -117,4 +121,38 @@ func findInvalidSumP1(ranges [][2]int) (int, error) {
 	}
 
 	return sum, nil
+}
+
+func findInvalidSumP2(ranges [][2]int) (int, error) {
+	sum := 0
+
+	for _, r := range ranges {
+		low := r[0]
+		high := r[1]
+
+		for i := low; i <= high; i++ {
+			s := strconv.Itoa(i)
+			if isInvalidP2(s) {
+				sum += i
+			}
+		}
+	}
+
+	return sum, nil
+}
+
+func isInvalidP2(s string) bool {
+	n := len(s)
+	// Try all possible pattern lengths L
+	// The pattern must repeat at least twice, so L <= n/2
+	for L := 1; L <= n/2; L++ {
+		if n%L == 0 {
+			pattern := s[:L]
+			repeats := n / L
+			if strings.Repeat(pattern, repeats) == s {
+				return true
+			}
+		}
+	}
+	return false
 }

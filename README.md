@@ -8,3 +8,4 @@ This will have my (working, fingers crossed) submissions, they may spoil your fu
 ### Day 02
 - In part two of the problem, I started thinking about pattern finding algorithms, and decided after brief thinking and coming to the conclusion that brute forcing would lead to insane time complexity, I would like to implement an existing algorithm
 - The [CS Stackexchange forum](https://cs.stackexchange.com/questions/79182/im-looking-for-an-algorithm-to-find-unknown-patterns-in-a-string) swiftly pointed me towards things such as LZ77 algorithms, suffix trees and suffix sorting. Funnily enough just yesterday in my heading I wrote not knowing about data structures and algorithms!
+- Also something about Rabin-Karp algorithms for a Hash/Sliding Window approach which I didn't implement but check out
