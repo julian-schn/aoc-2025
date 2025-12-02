@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 /*
@@ -23,6 +24,8 @@ Mental Model (p2):
 */
 
 func main() {
+	start := time.Now()
+
 	ranges, err := parseRanges("input.txt")
 	if err != nil {
 		fmt.Println("error:", err)
@@ -42,6 +45,9 @@ func main() {
 		return
 	}
 	fmt.Printf("Part 2: %d\n", sumP2)
+
+	elapsed := time.Since(start)
+	fmt.Println("Runtime:", elapsed)
 }
 
 func parseRanges(filename string) ([][2]int, error) {
