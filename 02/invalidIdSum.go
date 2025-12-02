@@ -18,7 +18,8 @@ Mental model (p1):
 /*
 Mental Model (p2):
 1. Same as above
-2.
+2. Find patterns? -> Find pattern identification algorithm
+3. Sum invalid IDs
 */
 
 func main() {
