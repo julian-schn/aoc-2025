@@ -1,4 +1,4 @@
-# Cafeteria, Day 4
+# Cafeteria, Day 5
 [LINK](https://adventofcode.com/2025/day/5)
 
 ## Given
