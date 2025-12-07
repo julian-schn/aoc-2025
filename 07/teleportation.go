@@ -185,50 +185,40 @@ func countTimelines(grid [][]rune) (int, error) {
 		return 0, fmt.Errorf("start position 'S' not found")
 	}
 
-	memo := make(map[[2]int]map[int]bool)
-	endPositions := traverse(startRow+1, startCol, grid, rows, cols, memo)
-	return len(endPositions), nil
+	// memo: key is [row, col], value is count of paths from that point to bottom
+	memo := make(map[[2]int]int)
+	count := traverse(startRow+1, startCol, grid, rows, cols, memo)
+	return count, nil
 }
 
-func traverse(row, col int, grid [][]rune, rows, cols int, memo map[[2]int]map[int]bool) map[int]bool {
+func traverse(row, col int, grid [][]rune, rows, cols int, memo map[[2]int]int) int {
+	// If we've reached past the last row, we found 1 valid timeline end
 	if row >= rows {
-		result := make(map[int]bool)
-		result[col] = true
-		return result
+		return 1
 	}
 
 	key := [2]int{row, col}
 	if cached, exists := memo[key]; exists {
-		result := make(map[int]bool)
-		for pos := range cached {
-			result[pos] = true
-		}
-		return result
+		return cached
 	}
 
-	var result map[int]bool
-
+	count := 0
 	switch grid[row][col] {
 	case '.':
-		result = traverse(row+1, col, grid, rows, cols, memo)
+		// Continue straight down
+		count = traverse(row+1, col, grid, rows, cols, memo)
 	case '^':
-		result = make(map[int]bool)
+		// Split left and right
 		if col-1 >= 0 {
-			left := traverse(row+1, col-1, grid, rows, cols, memo)
-			for pos := range left {
-				result[pos] = true
-			}
+			count += traverse(row+1, col-1, grid, rows, cols, memo)
 		}
 		if col+1 < cols {
-			right := traverse(row+1, col+1, grid, rows, cols, memo)
-			for pos := range right {
-				result[pos] = true
-			}
+			count += traverse(row+1, col+1, grid, rows, cols, memo)
 		}
 	default:
-		result = make(map[int]bool)
+		// Assumes pass-through for any other characters (like '|') used in visualization but acting as path
+		count = traverse(row+1, col, grid, rows, cols, memo)
 	}
-
-	memo[key] = result
-	return result
+	memo[key] = count
+	return count
 }
