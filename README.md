@@ -14,3 +14,9 @@ This will have my (working, fingers crossed) submissions, they may spoil your fu
 - Part two required another window, it is actually quite intuitive once you wrap your head around the principle
 - I am still wrestling with the Go syntax and philosophy, coming from Java. A lot of the VSC autocomplete is actually a huge bother trying to learn the language.
 - I've been using Google Gemini's learning mode to loop over my mental models (don't worry, I do think of the solution myself and then do need an embrassasing amount of ~~Googling~~StartPaging to actually implement it) and receive feedback. The way it goes back and forth with you asking control questions is really quite helpful, it made me trace my algorithm in p1 by hand for example
+
+## Day 07
+- Hashes, and such
+
+## Day 08
+- Union-Find
