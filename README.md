@@ -19,3 +19,7 @@ This will have my (working, fingers crossed) submissions, they may spoil your fu
 
 ### Day 09
 - **Computational Geometry**: Applied Ray Casting algorithm and rectangle intersection logic for point-in-polygon containment.
+
+### Day 10
+- **Brute Force / Bit Manipulation**: Used for Part 1 (small search space).
+- **Linear Systems / Backtracking**: Used for Part 2 (integer programming with small variable count).
